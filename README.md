@@ -41,6 +41,8 @@ held by one process, so close any serial monitor before starting the gateway.
 
 ## Pieces
 
+See [ARCHITECTURE.md](ARCHITECTURE.md) for how the pieces fit and why.
+
 **`tracker/tracker.ino`** — row controller. Line protocol over USB serial:
 `A <deg>` move to absolute angle, `Z` zero, `S` stop. Emits `T <angle> <volts>` every
 200 ms. Coils are de-energised when idle so the motor does not heat up.
