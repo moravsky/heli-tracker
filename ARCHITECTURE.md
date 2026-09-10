@@ -5,7 +5,7 @@ scaled down to one desk. Each tier mirrors a layer in a production tracker syste
 
 | Tier | Production role | Here |
 |---|---|---|
-| Row controller | Per-row embedded controller driving the actuator, reading local sensors | Arduino Uno + 28BYJ-48 stepper, `tracker/tracker.ino` |
+| Row controller | Per-row embedded controller driving the actuator, reading local sensors | Arduino Uno + 28BYJ-48 stepper, `controller/controller.ino` |
 | Network controller | Field gateway aggregating many rows into one uplink, enforcing safety | .NET 8 service, `gateway/` |
 | Operator dashboard | Cloud-hosted fleet view and control | React + TypeScript SPA, `dashboard/` |
 
@@ -13,7 +13,7 @@ scaled down to one desk. Each tier mirrors a layer in a production tracker syste
             serial, 115200 8N1               HTTP + WebSocket
  ┌──────────────┐   A <deg> / Z / S   ┌────────────────────┐   POST /api/rows/{id}/…   ┌───────────────┐
  │ row controller│ ◀────────────────── │      gateway       │ ◀──────────────────────── │   dashboard   │
- │  tracker.ino  │ ──────────────────▶ │                    │ ────────────────────────▶ │               │
+ │  controller.ino  │ ──────────────────▶ │                    │ ────────────────────────▶ │               │
  └──────────────┘  T <angle> <volts>  │  RowRegistry       │  SignalR /hub/telemetry   └───────────────┘
                      every 200 ms     │   ├ SerialDeviceLink   {rowId, angle, volts, ts}
                                       │   └ SimulatedDeviceLink (rows 2..n, or all with --sim)
@@ -23,7 +23,7 @@ scaled down to one desk. Each tier mirrors a layer in a production tracker syste
 Control flows down: dashboard → gateway → row. Telemetry flows up: row → gateway → dashboard.
 The gateway is the only component that talks to hardware and the only place safety limits live.
 
-## Row controller (`tracker/tracker.ino`)
+## Row controller (`controller/controller.ino`)
 
 A deliberately small firmware with no state beyond a step counter.
 

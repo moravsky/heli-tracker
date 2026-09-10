@@ -3,7 +3,7 @@ using System.IO.Ports;
 
 namespace Gateway;
 
-/// Talks the tracker.ino line protocol over a serial port.
+/// Talks the controller.ino line protocol over a serial port.
 ///   A <deg> | Z | S   →   telemetry "T <angle> <volts>" every 200 ms.
 public sealed class SerialDeviceLink : IDeviceLink
 {

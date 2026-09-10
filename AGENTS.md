@@ -11,7 +11,7 @@ the rest are simulated.
 
 ## Layout
 
-- `tracker/tracker.ino` — firmware. Serial line protocol: `A <deg>`, `Z`, `S`; emits
+- `controller/controller.ino` — firmware. Serial line protocol: `A <deg>`, `Z`, `S`; emits
   `T <angle> <volts>` every 200 ms.
 - `gateway/` — ASP.NET Core minimal API. `IDeviceLink` is the hardware seam;
   `RowRegistry` owns rows, clamps targets, keeps the telemetry ring, feeds the SignalR hub.
@@ -57,7 +57,7 @@ gateway in `--sim` mode and exercise the dashboard.
 
 ## Rules
 
-- Do not change the serial protocol in `tracker/tracker.ino` without saying so
+- Do not change the serial protocol in `controller/controller.ino` without saying so
   explicitly; the gateway's `SerialDeviceLink` and the docs depend on it.
 - Angle limits (±90°) are enforced in `RowRegistry.SetTarget`. Keep safety logic in the
   gateway, not the UI. The UI may mirror limits for usability but must not be the only place.

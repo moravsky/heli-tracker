@@ -8,7 +8,7 @@ controller → cloud → dashboard), minus the LoRa and the cloud.
 ```
  ┌───────────────────────┐   serial 115200    ┌──────────────────────────┐   REST + SignalR   ┌────────────────────┐
  │ Arduino Uno           │ ─────────────────▶ │ gateway/  (.NET 8)       │ ─────────────────▶ │ dashboard/ (React) │
- │ tracker/tracker.ino   │ ◀───────────────── │  IDeviceLink             │ ◀───────────────── │  fleet panel       │
+ │ controller/controller.ino   │ ◀───────────────── │  IDeviceLink             │ ◀───────────────── │  fleet panel       │
  │  28BYJ-48 stepper     │   A <deg> / Z / S  │   ├ SerialDeviceLink     │  /api/rows         │  row detail + SVG  │
  │  panel volts on A0    │                    │   └ SimulatedDeviceLink  │  /hub/telemetry    │  2-min chart       │
  └───────────────────────┘                    │  RowRegistry (clamp,     │                    │  find-sun sweep    │
@@ -43,7 +43,7 @@ held by one process, so close any serial monitor before starting the gateway.
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for how the pieces fit and why.
 
-**`tracker/tracker.ino`** — row controller. Line protocol over USB serial:
+**`controller/controller.ino`** — row controller. Line protocol over USB serial:
 `A <deg>` move to absolute angle, `Z` zero, `S` stop. Emits `T <angle> <volts>` every
 200 ms. Coils are de-energised when idle so the motor does not heat up.
 
