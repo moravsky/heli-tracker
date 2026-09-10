@@ -22,8 +22,8 @@ One command builds the dashboard, copies it into the gateway, and starts everyth
 <http://localhost:5080>:
 
 ```sh
-./run-demo.sh          # real hardware on the port in gateway/appsettings.json
-./run-demo.sh --sim    # no hardware: row-1 is simulated too
+./run.sh          # real hardware on the port in gateway/appsettings.json
+./run.sh --sim    # no hardware: row-1 is simulated too
 ```
 
 If the serial port is not present the gateway falls back to simulation on its own.

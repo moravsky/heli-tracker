@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # One-command demo: build the dashboard, copy it into the gateway, start the gateway.
-#   ./run-demo.sh          -> real hardware on the serial port in gateway/appsettings.json
-#   ./run-demo.sh --sim    -> simulated rows only (no hardware needed)
+#   ./run.sh          -> real hardware on the serial port in gateway/appsettings.json
+#   ./run.sh --sim    -> simulated rows only (no hardware needed)
 set -euo pipefail
 cd "$(dirname "$0")"
 
