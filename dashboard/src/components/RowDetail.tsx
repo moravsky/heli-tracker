@@ -17,7 +17,7 @@ export function RowDetail({ row, history, findSun, onFindSun, onCancelFindSun }:
   const [slider, setSlider] = useState(row.targetAngle)
   const [dragging, setDragging] = useState(false)
   const [err, setErr] = useState<string | null>(null)
-  const [stepText, setStepText] = useState('15')
+  const [stepText, setStepText] = useState('30')
 
   // Keep the slider in sync with the server's target unless the user is mid-drag.
   useEffect(() => { if (!dragging) setSlider(row.targetAngle) }, [row.targetAngle, row.id, dragging])
