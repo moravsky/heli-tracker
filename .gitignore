@@ -1,0 +1,15 @@
+# .NET
+bin/
+obj/
+*.user
+# Node
+node_modules/
+dist/
+# built dashboard copied into the gateway
+gateway/wwwroot/
+# misc
+.DS_Store
+*.log
+
+# interview prep notes, not part of the project
+HANDOFF.md
