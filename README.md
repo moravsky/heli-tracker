@@ -8,9 +8,9 @@ controller → cloud → dashboard), minus the LoRa and the cloud.
 ```
  ┌───────────────────────┐   serial 115200    ┌──────────────────────────┐   REST + SignalR   ┌────────────────────┐
  │ Arduino Uno           │ ─────────────────▶ │ gateway/  (.NET 8)       │ ─────────────────▶ │ dashboard/ (React) │
- │ controller/controller.ino   │ ◀───────────────── │  IDeviceLink             │ ◀───────────────── │  fleet panel       │
- │  28BYJ-48 stepper     │   A <deg> / Z / S  │   ├ SerialDeviceLink     │  /api/rows         │  row detail + SVG  │
- │  panel volts on A0    │                    │   └ SimulatedDeviceLink  │  /hub/telemetry    │  2-min chart       │
+ │ controller/           │ ◀───────────────── │  IDeviceLink             │ ◀───────────────── │  fleet panel       │
+ │  controller.ino       │   A <deg> / Z / S  │   ├ SerialDeviceLink     │  /api/rows         │  row detail + SVG  │
+ │  28BYJ-48 + A0 volts  │                    │   └ SimulatedDeviceLink  │  /hub/telemetry    │  2-min chart       │
  └───────────────────────┘                    │  RowRegistry (clamp,     │                    │  find-sun sweep    │
                                               │   ring buffer, hub fan-out)                   └────────────────────┘
                                               └──────────────────────────┘
