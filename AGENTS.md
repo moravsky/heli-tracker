@@ -66,5 +66,8 @@ gateway in `--sim` mode and exercise the dashboard.
 - Read serial bytes from `SerialPort.BaseStream` and split lines manually. Do not
   reintroduce `SerialPort.ReadLine`; on macOS it replayed buffered data after timeouts.
 - Keep dependencies minimal. No auth, no database, no Docker. This runs on one laptop.
+- Commits are authored by the repository owner only. Do not add yourself as an author or
+  co-author, and do not append tool, model, or session trailers to commit messages or pull
+  request descriptions. A commit message is the change and why, nothing else.
 - Prefer small, verifiable edits. Rebuild and run after each change; do not hand back
   untested code.
